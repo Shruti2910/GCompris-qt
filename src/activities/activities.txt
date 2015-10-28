@@ -96,6 +96,7 @@ money_cents
 mosaic
 numbers-odd-even
 paintings
+parachute
 penalty
 planegame
 readingh
