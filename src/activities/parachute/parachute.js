@@ -2,9 +2,9 @@
  *
  *   Copyright (C) 2015 Rajdeep Kaur <rajdeep1994@gmail.com>
  *
- *    Authors:
- *    Bruno Coudoin <bruno.coudoin@gcompris.net> (GTK+ version)
- *    Rajdeep kaur <rajdeep51994@gmail.com> (Qt Quick port)
+ *   Authors:
+ *   Bruno Coudoin <bruno.coudoin@gcompris.net> (GTK+ version)
+ *   Rajdeep kaur <rajdeep51994@gmail.com> (Qt Quick port)
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -23,17 +23,15 @@
 .pragma library
 .import QtQuick 2.0 as Quick
 .import GCompris 1.0 as GCompris 
-.import "qrc:/gcompris/src/core/core.js" as Core
-
 
 var currentLevel = 0
 var numberOfLevel = 4
 var items
-var checkPressed = 0
-var uppressed
-var downpressed
-var Oneclick
-var winlose
+var checkPressed = false
+var upPressed
+var downPressed
+var oneClick
+var winLose
 
 function start(items_) {
     items = items_
@@ -47,15 +45,15 @@ function stop() {
     items.animationcloud.stop()
     items.animationboat.stop()
     items.parachuteanimation.stop()
-    items.minitux.visible=false
-    items.parachuteImage.visible=false
+    items.minitux.visible = false
+    items.parachuteImage.visible = false
 }
 
 function initLevel() {
     items.bar.level = currentLevel + 1
-    checkPressed = 0
-    winlose = 0
-    Oneclick = 0
+    checkPressed = false
+    winLose = false
+    oneClick = false
     items.ok.visible = false
     items.animationheli.restart()
     items.animationcloud.restart()
@@ -65,69 +63,68 @@ function initLevel() {
 
 function processPressedKey(event) {
     switch(event.key) {
-    case Qt.Key_Up : event.accepted = true;
-        if(checkPressed === 0) {
-            uppressed = true;
+    case Qt.Key_Up:
+        event.accepted = true;
+        if(!checkPressed) {
+            upPressed = true;
             items.parachuteanimation.stop()
             items.parachuteanimationup.restart()
-            checkPressed = 1;
+            checkPressed = true;
         }
         else {
-            uppressed = true;
+            upPressed = true;
             items.parachuteanimationrelup.stop()
             items.parachuteanimationup.restart()
         }
         break;
-    case Qt.Key_Down : event.accepted = true;
-        if(checkPressed === 0) {
-            downpressed = true;
+    case Qt.Key_Down:
+        event.accepted = true;
+        if(!checkPressed) {
+            downPressed = true;
             items.parachuteanimation.stop()
             items.parachuteanimationdown.restart()
-            checkPressed = 1;
+            checkPressed = true;
         }
         else {
-            downpressed = true;
+            downPressed = true;
             items.parachuteanimationreldown.stop()
             items.parachuteanimationdown.restart()
         }
-
         break;
     }
-
-
 }
 
 function processReleasedKey(event) {
     switch(event.key) {
-    case Qt.Key_Up : event.accepted = true;
-        uppressed = false;
+    case Qt.Key_Up:
+        event.accepted = true;
+        upPressed = false;
         items.parachuteanimationup.stop()
         items.parachuteanimationrelup.restart()
-
         break;
-    case Qt.Key_Down : event.accepted = true;
-        downpressed = false;
+    case Qt.Key_Down:
+        event.accepted = true;
+        downPressed = false;
         items.parachuteanimationdown.stop()
         items.parachuteanimationreldown.restart()
         break;
     }
-
 }
 
-function parachuefun(){
+function parachuefun() {
     items.parachuteanimationx.stop()
     items.parachuteanimation.restart()
 }
 
 function nextLevel() {
-    if(numberOfLevel <= ++currentLevel ) {
+    if(numberOfLevel <= ++currentLevel) {
         currentLevel = 0
     }
-    items.keyunable.visible=false
-    items.parachuteImage.visible=false
+    items.keyunable.visible = false
+    items.parachuteImage.visible = false
     items.ok.visible = false
-    winlose = 0
-    Oneclick = 0
+    winLose = false
+    oneClick = false
     initLevel();
 }
 
@@ -135,7 +132,7 @@ function previousLevel() {
     if(--currentLevel < 0) {
         currentLevel = numberOfLevel - 1
     }
-    items.keyunable.visible=false
-    items.parachuteImage.visible=false
+    items.keyunable.visible = false
+    items.parachuteImage.visible = false
     initLevel();
 }
