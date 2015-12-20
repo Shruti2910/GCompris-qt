@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Creator: CorelDRAW X5 -->
+<svg
+    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:ns1="http://sozi.baierouge.fr"
+    xmlns:cc="http://web.resource.org/cc/"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    style="fill-rule:evenodd;text-rendering:geometricPrecision;image-rendering:optimizeQuality;clip-rule:evenodd;shape-rendering:geometricPrecision"
+    xml:space="preserve"
+    viewBox="0 0 5207 13018"
+  >
+ <defs
+    >
+  <style
+        type="text/css"
+      >
+    .str0 {stroke:#2B2A29;stroke-width:7.62}
+    .str2 {stroke:#2B2A29;stroke-width:17.64}
+    .str1 {stroke:#2B2A29;stroke-width:35.28}
+    .fil10 {fill:none}
+    .fil8 {fill:#2B2A29}
+    .fil14 {fill:black}
+    .fil4 {fill:#12542B}
+    .fil5 {fill:#175727}
+    .fil11 {fill:#C2A897}
+    .fil13 {fill:#CFCFCF}
+    .fil3 {fill:#DCBEAA}
+    .fil0 {fill:#212220}
+    .fil17 {fill:#425782}
+    .fil1 {fill:#5983A3}
+    .fil15 {fill:#84413E}
+    .fil16 {fill:#873635}
+    .fil2 {fill:#8C3938}
+    .fil6 {fill:#A8BFCB}
+    .fil7 {fill:#CCE0EB}
+    .fil9 {fill:#E5E4E5}
+    .fil12 {fill:#F3F3F3}
+  </style
+    >
+ </defs
+  >
+ <g
+      id="Layer_x0020_1"
+    >
+  <ellipse
+        ry="287"
+        rx="970"
+        class="fil0 str0"
+        transform="matrix(.98498 .17267 -.17267 .98498 1958.5 12686)"
+    />
+  <ellipse
+        ry="287"
+        rx="970"
+        class="fil0 str0"
+        transform="matrix(.98498 .17267 -.17267 .98498 2653.6 12446)"
+    />
+  <path
+        class="fil1 str1"
+        d="m3242 6611l-2921-881s-573 1550-143 2784c430 1233 601 3946 601 3946s782 273 1408 194c75-9-21-295 43-236 70 65 792 92 804-45 82-913 207-5762 207-5762z"
+    />
+  <path
+        class="fil2 str1"
+        d="m5024 6034c57 0 104 49 104 109v6326c0 60-47 109-104 109s-104-49-104-109v-6326c0-60 47-109 104-109z"
+    />
+  <circle
+        cy="6115"
+        cx="4744"
+        r="446"
+        class="fil3 str1"
+    />
+  <path
+        class="fil4 str1"
+        d="m2613 5241l121-207c52 345 138 379 500 431 276 34 569 121 862 138 0 0 810 0 552 103-241 86-155 965-241 965-828 0-1465-776-1793-1431z"
+    />
+  <path
+        class="fil5 str1"
+        d="m326 5713s-689-3930 1114-3870c1803 61 1256 284 1256 284s709 344 790 3586-3161 0-3161 0z"
+    />
+  <path
+        class="fil6 str0"
+        d="m2332 3363c465 675 776 1351 932 2026 48-600 55-1189 0-1763l-932-263z"
+    />
+  <path
+        class="fil7"
+        d="m2342 3344c430 624 717 1262 885 1886 45-554 26-1113-24-1643l-861-243z"
+    />
+  <polygon
+        points="2998 3922 3022 4443 3174 4643 3238 4483 3070 3801"
+        class="fil8 str0"
+    />
+  <ellipse
+        cy="1977"
+        cx="2940"
+        rx="1171"
+        class="fil3 str1"
+        ry="1960"
+    />
+  <path
+        class="fil9 str1"
+        d="m1989 833s173 76 216 88c107 30 234 74 319 138 159 127 404 393 404 605 0 117 11 266 11 382-32 53-191 106-266 85-159-53-234-297-382-393-138-85-446 21-573-106-149-149-13-712 64-871 62-128 205-185 343-185-53 86-134 225-134 257z"
+    />
+  <path
+        class="fil10 str2"
+        d="m3245 963c85-21 181-74 276-74 42 0 96-21 127-32 11 0 106-42 117-42"
+    />
+  <path
+        class="fil10 str2"
+        d="m3235 1208c64 0 127-32 191-32h127c42-11 96-85 149-85 21 0 64-21 74-21 32 0 64-11 96-11"
+    />
+  <ellipse
+        ry="162"
+        rx="276"
+        class="fil11"
+        transform="matrix(.46127 -.23335 .061188 1.7591 3898.1 1746.2)"
+    />
+  <path
+        class="fil3"
+        d="m3864 2264c-53-117-159-21-170 53-32 138 42 117 96 170 42 42 308 32 340-11 53-85 74-369 0-446-137-142-339-371-340-372-134 5 1 241 6 550 34 3 56 23 68 55z"
+    />
+  <path
+        class="fil10 str1"
+        d="m3787 1654c96 149 244 244 340 372 64 85 53 361 0 446-32 42-297 53-340 11-53-53-127-32-96-170 11-74 117-170 170-53"
+    />
+  <ellipse
+        ry="162"
+        rx="276"
+        class="fil11"
+        transform="matrix(.99132 -.23335 .13150 1.7591 3319.6 1850.2)"
+    />
+  <path
+        class="fil12 str2"
+        d="m3565 1681c-122-110-255-134-405-34 132 106 267 117 405 34z"
+    />
+  <path
+        class="fil12 str2"
+        d="m3784 1614c85-111 179-151 284-86-92 110-187 138-284 86z"
+    />
+  <path
+        class="fil13 str2"
+        d="m3567 1533c-82 12-176 12-246-12-12 0-258-117-258-12v94c0 94 70 23 106 23 35 0 70-23 106-23 82 0 164 23 246 23 0 0 70-23 82-35l12-35s-12-12-47-23z"
+    />
+  <path
+        class="fil13 str2"
+        d="m3799 1544c-7-44-15-59 37-66 73-7 117-59 176-88 7 0 117-103 117-37 0 22 0 88-15 95-29 15-81 51-110 51s-66 15-95 22c-37 7-66 37-110 22z"
+    />
+  <circle
+        cy="1678"
+        cx="3419"
+        r="54"
+        class="fil14 str2"
+    />
+  <circle
+        cy="1558"
+        cx="3969"
+        r="46"
+        class="fil14 str2"
+    />
+  <path
+        class="fil14 str0"
+        d="m3929 3027c-151 69-302 69-461 48-68-11-171-32-239-5-298 122-56 202 68 191 151-16 382-85 529-149 24-11 88-74 103-85z"
+    />
+  <path
+        class="fil15 str1"
+        d="m4e3 3230c294 114-76 769 241 964 210 129 446 18 479-350-202-177-489-69-552-50 11-323 15-536-173-624-248-116-422-106 5 59z"
+    />
+  <ellipse
+        cy="3834"
+        cx="4419"
+        rx="251"
+        class="fil14 str1"
+        ry="54"
+    />
+  <path
+        class="fil10 str1"
+        d="m1438 3600s-506 1458 129 2140"
+    />
+  <path
+        class="fil10 str1"
+        d="m1684 5517s-200 600-435 588"
+    />
+  <rect
+        rx="101"
+        ry="101"
+        height="706"
+        width="202"
+        y="6233"
+        x="4621"
+        class="fil16 str1"
+    />
+  <polygon
+        points="2173 7842 2276 8512 2379 12458 2173 12407"
+        class="fil17"
+    />
+  <line
+        y1="12407"
+        x2="2164"
+        x1="2199"
+        y2="7774"
+        class="fil10 str1"
+    />
+ </g
+  >
+<metadata
+    ><rdf:RDF
+      ><cc:Work
+        ><dc:format
+          >image/svg+xml</dc:format
+        ><dc:type
+            rdf:resource="http://purl.org/dc/dcmitype/StillImage"
+        /><cc:license
+            rdf:resource="http://creativecommons.org/licenses/publicdomain/"
+        /><dc:publisher
+          ><cc:Agent
+              rdf:about="http://openclipart.org/"
+            ><dc:title
+              >Openclipart</dc:title
+            ></cc:Agent
+          ></dc:publisher
+        ></cc:Work
+      ><cc:License
+          rdf:about="http://creativecommons.org/licenses/publicdomain/"
+        ><cc:permits
+            rdf:resource="http://creativecommons.org/ns#Reproduction"
+        /><cc:permits
+            rdf:resource="http://creativecommons.org/ns#Distribution"
+        /><cc:permits
+            rdf:resource="http://creativecommons.org/ns#DerivativeWorks"
+        /></cc:License
+      ></rdf:RDF
+    ></metadata
+  ></svg
+>
