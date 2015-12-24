@@ -19,6 +19,8 @@
  *   along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.1
+import GCompris 1.0
+import QtQuick.Controls 1.0
 
 import "../../core"
 import "family.js" as Activity
@@ -50,6 +52,7 @@ ActivityBase {
             property alias background: background
             property alias bar: bar
             property alias bonus: bonus
+
         }
 
         onStart: { Activity.start(items) }
@@ -62,16 +65,119 @@ ActivityBase {
             onClose: home()
         }
 
+        Image{
+            id:bambo1
+            source: url + "bambo.svg"
+            x:background.width/14+2*circleContent2.width
+            y:background.height/2.5
+            width:background.width/80
+            height:background.height/2
+            rotation:90
+
+        }
+
+        Item{
+            id:caption1
+            GCText{
+               id:caption1text
+               text:Activity.caption[bar.level-1][0]
+               visible:Activity.caption[bar.level-1][0] === "?" ? false : true
+               x:background.width/14+2*circleContent2.width
+               y:background.height/1.5
+            }
+            Image{
+               id:caption1image
+               source:url+"questionmark.svg"
+               visible:Activity.caption[bar.level-1][0] === "?" ? true : false
+               x:background.width/14+2*circleContent2.width
+               y:background.height/1.5
+
+            }
+
+        }
+
+        Image{
+            id:bambo2
+            source:url + "bambo.svg"
+            x:background.width/5.5
+            y:background.height/5.5
+            height:background.height/1.8
+            width:background.width/80
+            rotation:40
+
+        }
+
+        Item{
+            id:caption2
+            x:background.width/7
+            y:background.height/2.5
+            GCText{
+               text:Activity.caption[bar.level-1][1]
+               visible:Activity.caption[bar.level-1][1] === "?" ? false : true
+
+
+            }
+            Image{
+               source:url+"questionmark.svg"
+               visible:Activity.caption[bar.level-1][1] === "?" ? true : false
+            }
+
+        }
+        Image{
+            id:bambo3
+            source:url+ "bambo.svg"
+            height:background.height/2
+            width:background.width/60
+            x:background.width/14+background.width/4+(circleContent2.width)
+            y:background.height/5
+            rotation:150
+        }
+
+        Item{
+            id:caption3
+            y:background.height/2.5
+            x:background.width/14+background.width/4+(1.3*circleContent2.width)
+            GCText{
+               text:Activity.caption[bar.level-1][2]
+               visible:Activity.caption[bar.level-1][2] === "?" ? false : true
+
+
+
+            }
+            Image{
+               source:url+"questionmark.svg"
+               visible:Activity.caption[bar.level-1][2] === "?" ? true : false
+               anchors.top:bambo3.bottom
+               anchors.rightMargin: 7
+
+            }
+
+        }
+
         Item {
             id:circleContent1
-            x:background.width/4
+            x:background.width/3.6
             y:background.height/10
             width:background.width/9
             height:background.width/9
-            Image{
-                id:pic1
-                source:url+ Activity.CirleContent[items.bar.level-1][0]
-                anchors.fill:parent
+            Rectangle{
+                id:circlef
+                width:parent.width
+                height:parent.height
+                radius:parent.width/2
+                border.color:"black"
+                border.width:5
+                Image{
+                    id:pic1
+                    source:url+ Activity.CirleContent[items.bar.level-1][0]
+                    width:parent.width
+                    height:parent.height
+                    anchors{
+                        horizontalCenter:parent.horizontalCenter
+                        verticalCenter: parent.verticalCenter
+                    }
+                }
+
             }
         }
 
@@ -85,154 +191,106 @@ ActivityBase {
                 id:circleContent2
                 width:background.width/9
                 height:background.width/9
-                Image{
-                    id:pic2
-                    source:url+Activity.CirleContent[items.bar.level-1][1]
-                    anchors.fill:parent
+                Rectangle{
+                    id:circlef1
+                    width:parent.width
+                    height:parent.height
+                    border.color:"black"
+                    radius:parent.width/2
+                    border.width: 5
+                    Image{
+                        id:pic2
+                        source:url+Activity.CirleContent[items.bar.level-1][1]
+                        width:parent.width
+                        height:parent.height
+                        anchors{
+                            horizontalCenter:parent.horizontalCenter
+                            verticalCenter: parent.verticalCenter
+                        }
+
+                    }
                 }
             }
+
+
             Item {
                 id:circleContent3
                 width:background.width/9
                 height:background.width/9
-                Image{
-                    id:pic3
-                    source:url+Activity.CirleContent[items.bar.level-1][2]
-                    anchors.fill:parent
+                Rectangle{
+                    id:cirlef2
+                    width:parent.width
+                    height:parent.height
+                    radius:parent.width/2
+                    border.color:"black"
+                    border.width: 5
+                    Image{
+                        id:pic3
+                        source:url+Activity.CirleContent[items.bar.level-1][2]
+                        width:parent.width
+                        height:parent.height
+                        anchors{
+                            horizontalCenter:parent.horizontalCenter
+                            verticalCenter: parent.verticalCenter
+                        }
+
+                    }
+
                 }
             }
         }
 
-
-
-        Grid{
+        Grid {
             columns: 1
             rowSpacing:background.width/10
             x:background.width/1.5
             y:background.height/14
-            Rectangle{
-                id : option1
-                color:"#00BFFF"
+            Button {
+                id:button1
+                style: GCButtonStyle {}
                 width:background.width/5
                 height:background.height/6
-                radius:10
-                border.color: "black"
-                border.width: 5
-                GCText {
-                    id:text1
-                    color:"black"
-                    text:Activity.Options[0]
-                    fontSize: largeSize
-                    horizontalAlignment: Text.AlignHCenter
-                    anchors {
-                        horizontalCenter: parent.horizontalCenter
-                        verticalCenter: parent.verticalCenter
-                    }
-
-                }
-
-                MouseArea{
-                    id : optionClick1
-                    anchors.fill: parent
-                    hoverEnabled: true
-                    onEntered: {
-                         option1.color = "#4682B4"
-                    }
-                    onExited: {
-                         option1.color = "#00BFFF"
-                    }
-                    onClicked: {
-                        if(text1.text === Activity.answer[0])
-                        {
-                            bonus.good("lion");
-
-                        }
-
-                    }
-                }
-
-            }
-
-            Rectangle{
-                id: option2
-                color:"#00BFFF"
-                width:background.width/5
-                height:background.height/6
-                radius:10
-                border.color: "black"
-                border.width: 5
-                GCText{
-                    id:text2
-                    color:"black"
-                    text:Activity.Options[1]
-                    fontSize: largeSize
-                    horizontalAlignment: Text.AlignHCenter
-                    anchors {
-                        horizontalCenter: parent.horizontalCenter
-                        verticalCenter: parent.verticalCenter
-                    }
-
-                    MouseArea{
-                        id : optionClick2
-                        anchors.fill: parent
-                        hoverEnabled: true
-                        onEntered: {
-                             option2.color = "#4682B4"
-                        }
-                        onExited: {
-                             option2.color = "#00BFFF"
-                        }
-                        onClicked: {
-
-                        }
-                    }
-
-
-                }
-
-
-            }
-
-            Rectangle{
-                id: option3
-                color:"#00BFFF"
-                width:background.width/5
-                height:background.height/6
-                radius:10
-                border.color: "black"
-                border.width: 5
-                GCText{
-                    id:text3
-                    color:"black"
-                    text:Activity.Options[2]
-                    fontSize: largeSize
-                    horizontalAlignment: Text.AlignHCenter
-                    anchors {
-                        horizontalCenter: parent.horizontalCenter
-                        verticalCenter: parent.verticalCenter
-                    }
-
-                    MouseArea{
-                        id : optionClick3
-                        anchors.fill: parent
-                        hoverEnabled: true
-                        onEntered: {
-                             option3.color = "#4682B4"
-                        }
-                        onExited: {
-                             option3.color = "#00BFFF"
-                        }
-                        onClicked: {
-
-                        }
+                text:Activity.Options[items.bar.level-1][0]
+                onClicked:{
+                    if(button1.text === Activity.answer[bar.level-1]) {
+                        bonus.good("lion")
                     }
 
                 }
 
             }
+            Button {
+                id:button2
+                style: GCButtonStyle {}
+                width:background.width/5
+                height:background.height/6
+                text:Activity.Options[items.bar.level-1][1]
+                onClicked:{
+                    if(button2.text === Activity.answer[bar.level-1]) {
+                        bonus.good("lion")
+                    }
 
+                }
+
+            }
+            Button {
+                id:button3
+                style: GCButtonStyle {}
+                width:background.width/5
+                height:background.height/6
+                text:Activity.Options[items.bar.level-1][2]
+                onClicked:{
+                    if(button3.text === Activity.answer[bar.level-1]) {
+                        bonus.good("lion")
+                    }
+
+                }
+
+            }
 
         }
+
+
 
         Bar {
             id: bar

@@ -1,10 +1,9 @@
 /* GCompris - family.js
  *
- * Copyright (C) 2015 YOUR NAME <xx@yy.org>
+ * Copyright (C) 2015 RAJDEEP KAUR <rajdeep51994@gmail.com>
  *
  * Authors:
- *   <THE GTK VERSION AUTHOR> (GTK+ version)
- *   "YOUR NAME" <YOUR EMAIL> (Qt Quick port)
+ *   "RAJDEEP KAUR" <rajdeep51994@gmail.com> (Qt Quick port)
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -23,18 +22,58 @@
 .import QtQuick 2.0 as Quick
 
 var currentLevel = 0
-var numberOfLevel = 15
+var numberOfLevel = 13
 var items
 
-var CirleContent = [  [ "girl1.svg","man1.svg","grandma.svg"] ,
-                      [ "girl2.svg","man2.svg","grandpa.svg" ], ] ;
-var Options = [ "Grand mother","Grand Father","Father" ]
-var answer = ["Grand mother"]
+var CirleContent = [  [ "girl1.svg","man1.svg","grandmother.svg"] ,
+                      [ "girl2.svg","man2.svg","grandpa.svg" ],
+                      [ "man1.svg","man2.svg","girl3.svg"],
+                      [ "lady.svg","boy1.svg","lady1.svg"],
+                      [ "boy1.svg","lady.svg","girl2.svg"],
+                      [ "man1.svg","man2.svg","boy1.svg"],
+                      [ "girl3.svg","man1.svg","man2.svg"],
+                      [ "grandmother.svg","man1.svg","boy1.svg"],
+                      [ "girl2.svg","lady2.svg","grandpa.svg"] ,
+                      [ "girl1.svg","man1.svg","grandmother.svg"],
+                      [ "girl2.svg","man2.svg","grandpa.svg"],
+                      [ "girl3.svg","man1.svg","girl2.svg"],
+                      [ "man1.svg","man2.svg","girl3.svg"],
+] ;
+var Options = [[ "Grand Mother","Grand Father","Father" ],
+               [ "Grand Mother", "Mother", "Grand Father"],
+               [ "Uncle","Aunty","father"],
+               [ "Mother","Aunty","GrandMother"],
+               [ "Brother","Sister","Cousin"],
+               [ "Daughter","Son","Newphew"],
+               [ "Newphew","Niece","Daughter"],
+               [ "Grand Son", "Son","Son In Law"],
+               [ "Grand Daughter","Daughter","Daughter In Law"],
+               [ "Mother","Mother in law","Aunty"],
+               [ "Father", "Father in Law", "Uncle" ],
+               [ "Sister","Cousin","Sister in Law"],
+               [ "Brother","Brother in law","Cousin"]
+]
+var answer = ["Grand Mother","Grand Father","Uncle","Aunty","Cousin","Newphew","Niece","Grand Son","Grand Daughter","Mother in law","Father in Law","Sister in Law","Brother in law"];
 
+var caption = [ ["Mother","Father","?"],
+                ["Father","Father","?"],
+                ["Father","Brother","?"],
+                ["Mother","?","Sister"],
+                ["Mother","Aunty","?"],
+                ["Father","Brother","?"],
+                ["Brother","?","Father"],
+                ["Son","Son","?"],
+                ["Father","Mother","?"],
+                ["Mother","Husband","?"],
+                ["Father","Wife","?"],
+                ["?","Wife","Sister"],
+                ["Husband","?","Brother"]
+        ]
 
 function start(items_) {
     items = items_
     currentLevel = 0
+
     initLevel()
 }
 
