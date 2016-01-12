@@ -25,19 +25,19 @@ var currentLevel = 0
 var numberOfLevel = 13
 var items
 
-var CirleContent = [  [ "girl1.svg","man1.svg","grandmother.svg"] ,
-                      [ "girl2.svg","man2.svg","grandpa.svg" ],
-                      [ "man1.svg","man2.svg","girl3.svg"],
+var CirleContent = [  [ "man1.svg","girl1.svg","grandmother.svg"] ,
+                      [ "grandpa.svg","girl2.svg","man1.svg" ],
+                      [ "girl3.svg","man1.svg","man2.svg"],
                       [ "lady.svg","boy1.svg","lady1.svg"],
-                      [ "boy1.svg","lady.svg","girl2.svg"],
+                      [ "lady.svg","boy1.svg","girl2.svg"],
                       [ "man1.svg","man2.svg","boy1.svg"],
                       [ "girl3.svg","man1.svg","man2.svg"],
                       [ "grandmother.svg","man1.svg","boy1.svg"],
-                      [ "girl2.svg","lady2.svg","grandpa.svg"] ,
-                      [ "girl1.svg","man1.svg","grandmother.svg"],
+                      [ "lady.svg","girl1.svg","grandpa.svg"] ,
+                      [ "man1.svg","lady1.svg","grandmother.svg"],
                       [ "girl2.svg","man2.svg","grandpa.svg"],
                       [ "girl3.svg","man1.svg","girl2.svg"],
-                      [ "man1.svg","man2.svg","girl3.svg"],
+                      [ "man2.svg","girl3.svg","man1.svg"],
 ] ;
 var Options = [[ "Grand Mother","Grand Father","Father" ],
                [ "Grand Mother", "Mother", "Grand Father"],
@@ -55,20 +55,22 @@ var Options = [[ "Grand Mother","Grand Father","Father" ],
 ]
 var answer = ["Grand Mother","Grand Father","Uncle","Aunty","Cousin","Newphew","Niece","Grand Son","Grand Daughter","Mother in law","Father in Law","Sister in Law","Brother in law"];
 
-var caption = [ ["Mother","Father","?"],
-                ["Father","Father","?"],
-                ["Father","Brother","?"],
+var caption = [ ["?","Father","Mother"],
+                ["Father","?","Son"],
+                ["Brother","Daughter","?"],
                 ["Mother","?","Sister"],
-                ["Mother","Aunty","?"],
-                ["Father","Brother","?"],
+                ["?","Mother","Niece"],
+                ["Son","Brother","?"],
                 ["Brother","?","Father"],
                 ["Son","Son","?"],
-                ["Father","Mother","?"],
+                ["?","Mother","Father"],
                 ["Mother","Husband","?"],
                 ["Father","Wife","?"],
                 ["?","Wife","Sister"],
-                ["Husband","?","Brother"]
+                ["?","Husband","Brother"]
         ]
+
+
 
 function start(items_) {
     items = items_

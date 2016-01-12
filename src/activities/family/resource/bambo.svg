@@ -10,9 +10,9 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="11mm"
+   width="82mm"
    height="297mm"
-   viewBox="0 0 38.97636 1052.3622"
+   viewBox="0 0 290.55128 1052.3622"
    id="svg3351"
    version="1.1"
    inkscape:version="0.91 r"
@@ -24,7 +24,7 @@
        xlink:href="#linearGradient688"
        id="linearGradient30337"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.1515053,0,0,173.43344,-36.329479,-45401.004)"
+       gradientTransform="matrix(0.1515053,0,0,173.43344,83.670542,-45398.147)"
        x1="508.85693"
        y1="286.77393"
        x2="289.26093"
@@ -40,6 +40,36 @@
          offset="1"
          style="stop-color:#000000;stop-opacity:1;" />
     </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient688"
+       id="linearGradient30337-0"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.12044873,0,0,39.913568,42.69283,-10357.652)"
+       x1="508.85693"
+       y1="286.77393"
+       x2="289.26093"
+       y2="221.65234" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient688"
+       id="linearGradient30337-0-6"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.11121764,0,0,36.432595,-151.55305,-9621.5776)"
+       x1="508.85693"
+       y1="286.77393"
+       x2="289.26093"
+       y2="221.65234" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient688"
+       id="linearGradient30337-09"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.1515053,0,0,173.43344,80.813387,-45395.29)"
+       x1="508.85693"
+       y1="286.77393"
+       x2="289.26093"
+       y2="221.65234" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -58,7 +88,14 @@
      inkscape:window-height="712"
      inkscape:window-x="0"
      inkscape:window-y="0"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="1"
+     showguides="true"
+     inkscape:guide-bbox="true">
+    <sodipodi:guide
+       position="-134.28574,1248.5714"
+       orientation="0,1"
+       id="guide3352" />
+  </sodipodi:namedview>
   <metadata
      id="metadata3356">
     <rdf:RDF>
@@ -78,11 +115,40 @@
     <rect
        rx="0.63995689"
        ry="306.43341"
-       y="1.3340569"
-       x="-3.5184135"
+       y="4.1911998"
+       x="116.48161"
        height="1050.6288"
        width="47.036827"
        id="rect3355"
        style="fill:url(#linearGradient30337);fill-opacity:1;stroke:none" />
+    <rect
+       rx="0.50877428"
+       ry="70.521866"
+       y="91.134422"
+       x="68.778061"
+       height="241.78926"
+       width="37.394905"
+       id="rect3355-6"
+       style="fill:url(#linearGradient30337-0);fill-opacity:1;stroke:none"
+       transform="matrix(0.78231423,-0.62288398,0.70136394,0.71280336,0,0)" />
+    <rect
+       rx="0.46978223"
+       ry="64.37146"
+       y="-84.059296"
+       x="-127.46696"
+       height="220.70215"
+       width="34.528992"
+       id="rect3355-6-5"
+       style="fill:url(#linearGradient30337-0-6);fill-opacity:1;stroke:none"
+       transform="matrix(-0.81057734,-0.58563161,-0.73512053,0.67793643,0,0)" />
+    <rect
+       rx="0.63995689"
+       ry="306.43341"
+       y="7.0478163"
+       x="113.62446"
+       height="1050.6288"
+       width="47.036827"
+       id="rect3355-3"
+       style="fill:url(#linearGradient30337-09);fill-opacity:1;stroke:none" />
   </g>
 </svg>
