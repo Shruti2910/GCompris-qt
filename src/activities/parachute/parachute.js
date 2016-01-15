@@ -43,8 +43,8 @@ function start(items_) {
 }
 
 function stop() {
-    items.animationheli.stop()
-    items.animationcloud.stop()
+    items.loop.stop()
+    items.loopcloud.restart()
     items.animationboat.stop()
     items.parachuteanimation.stop()
     items.minitux.visible=false
@@ -57,8 +57,8 @@ function initLevel() {
     winlose = 0
     Oneclick = 0
     items.ok.visible = false
-    items.animationheli.restart()
-    items.animationcloud.restart()
+    items.loop.restart()
+    items.loopcloud.restart()
     items.animationboat.restart()
     items.parachuteanimationx.restart()
 }

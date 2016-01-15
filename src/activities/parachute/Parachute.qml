@@ -77,6 +77,8 @@ ActivityBase {
             property alias parachuteanimationrelup: parachuteanimationrelup
             property alias parachuteanimationreldown: parachuteanimationreldown
             property alias ok: ok
+            property alias loop:loop
+            property alias loopcloud:loopcloud
 
         }
 
@@ -111,13 +113,13 @@ ActivityBase {
 
         Item{
             id:helimotion
-            width:helicopter.width
-            height:helicopter.height
+            width:(bar.level===1?background.width/6:bar.level===2?background.width/4:bar.level===3?background.width/20:bar.level===4?background.width/7:background.width/7)
+            height:(bar.level===1?background.height/6:bar.level===2?background.height/4:bar.level===3?background.height/20:bar.level===4?background.height/7:background.height/7)
             x: -width
             Rectangle{
                 id:forhover
-                width:helicopter.width
-                height:helicopter.height
+                width:(bar.level===1?background.width/6:bar.level===2?background.width/4:bar.level===3?background.width/20:bar.level===4?background.width/7:background.width/7)
+                height:(bar.level===1?background.height/6:bar.level===2?background.height/4:bar.level===3?background.height/20:bar.level===4?background.height/7:background.height/7)
                 visible:false
                 border.width:7
                 radius:20
@@ -127,6 +129,8 @@ ActivityBase {
             Image{
                 id:helicopter
                 source:activity.dataSetUrl+"tuxplane.svg"
+                width:(bar.level===1?background.width/6:bar.level===2?background.width/4:bar.level===3?background.width/20:bar.level===4?background.width/7:background.width/7)
+                height:(bar.level===1?background.height/6:bar.level===2?background.height/4:bar.level===3?background.height/20:bar.level===4?background.height/7:background.height/7)
                 MouseArea {
                     id:mousei
                     hoverEnabled: true
@@ -139,24 +143,29 @@ ActivityBase {
                     }
                     onClicked:{
                         if(Activity.Oneclick === 0) {
-                             minitux.visible=true
-                             Activity.parachuefun()
+                            minitux.visible=true
+                            Activity.parachuefun()
                             Activity.Oneclick = 1;
                         }
                     }
 
                 }
             }
+            SequentialAnimation{
+                id:loop
+                loops: Animation.Infinite
+                PropertyAnimation {
+                    id:animationheli
+                    target:helimotion
+                    properties: "x"
+                    from:-helimotion.width
+                    to:background.width
+                    duration: (bar.level === 1 ? 20000 : bar.level === 2 ? 16000 : bar.level === 3 ? 12000 : bar.level === 4 ? 10000 : 9000)
+                    easing.type:Easing.Linear
+                }
 
 
-            PropertyAnimation {
-                id:animationheli
-                target:helimotion
-                properties: "x"
-                from:-helimotion.width
-                to:background.width
-                duration: (bar.level === 1 ? 20000 : bar.level === 2 ? 16000 : bar.level === 3 ? 12000 : bar.level === 4 ? 10000 : 9000)
-                easing.type:Easing.Linear
+
             }
         }
 
@@ -167,7 +176,7 @@ ActivityBase {
                 if(( parachutOpen.y >= background.height/1.4 )&&(Activity.winlose === 0)) {
                     if((parachutOpen.x >= boatmotion.x) && (parachutOpen.x <= (boatmotion.x+boatmotion.width))) {
                         bonus.good("smiley")
-                          Activity.winlose = 1
+                        Activity.winlose = 1
                     }
                     if((parachutOpen.y >= background.height/1.2)&&(Activity.winlose === 0)) {
                         if((parachutOpen.x <= boatmotion.x) || (parachutOpen.x >= (boatmotion.x+boatmotion.width))) {
@@ -273,6 +282,9 @@ ActivityBase {
                 source:activity.dataSetUrl+"cloud.svg"
                 y:background.height/7
             }
+            SequentialAnimation{
+                id:loopcloud
+                loops: Animation.Infinite
             PropertyAnimation {
                 id:animationcloud
                 target:cloudmotion
@@ -282,24 +294,67 @@ ActivityBase {
                 duration:(bar.level === 1 ? 19000 : bar.level === 2 ? 15000 : bar.level === 3 ? 11000 : bar.level === 4 ? 9000 : 9000)
                 easing.type:Easing.Linear
             }
+            PropertyAnimation {
+                id:animationcloud1
+                target:cloudmotion
+                properties:"x"
+                from:background.width
+                to:-cloud.width
+                duration:(bar.level === 1 ? 19000 : bar.level === 2 ? 15000 : bar.level === 3 ? 11000 : bar.level === 4 ? 9000 : 9000)
+                easing.type:Easing.Linear
+            }
+            PropertyAnimation {
+                id:animationcloud2
+                target:cloudmotion
+                properties:"x"
+                from:-cloud.width
+                to:background.width
+                duration:(bar.level === 1 ? 19000 : bar.level === 2 ? 15000 : bar.level === 3 ? 11000 : bar.level === 4 ? 9000 : 9000)
+                easing.type:Easing.Linear
+            }
+            PropertyAnimation {
+                id:animationcloud3
+                target:cloudmotion
+                properties:"x"
+                from:background.width
+                to:-cloud.width
+                duration:(bar.level === 1 ? 19000 : bar.level === 2 ? 15000 : bar.level === 3 ? 11000 : bar.level === 4 ? 9000 : 9000)
+                easing.type:Easing.Linear
+            }
+
+            PropertyAnimation {
+                id:animationcloud4
+                target:cloudmotion
+                properties:"x"
+                from:-cloud.width
+                to:background.width
+                duration:(bar.level === 1 ? 19000 : bar.level === 2 ? 15000 : bar.level === 3 ? 11000 : bar.level === 4 ? 9000 : 9000)
+                easing.type:Easing.Linear
+            }
+
+
+            }
         }
 
 
         Item{
             id:boatmotion
-            width:boat.width
-            height:boat.heigt
+            width:background.width/4
+            height:background.height/4
             Image{
                 id:boat
                 source:activity.dataSetUrl+"fishingboat.svg"
-                y:background.height/1.2
+                y:(bar.level ===1 ? background.height/1.4 : bar.level==2 ? background.height/1.4 : bar.level ===3 ? background.height/1.4:bar.level === 4?background.height/1.4:background.height/1.3 )
+                width:(bar.level ===1 ? background.width/4 : bar.level==2 ? background.width/4.5 : bar.level ===3 ? background.width/5:bar.level === 4?background.width/5.1:background.width/5.1 )
+                height:background.height/4
+
             }
             PropertyAnimation {
                 id:animationboat
                 target:boatmotion
                 properties:"x"
                 from:-boat.width
-                to:background.width-2*boat.width
+                to:background.width-2.5*boat.width
                 duration:(bar.level === 1 ? 24000 : bar.level === 2 ? 20500 : bar.level === 3 ? 19000 : bar.level === 4 ? 17000 : 9000)
                 easing.type:Easing.Linear
             }
@@ -338,7 +393,7 @@ ActivityBase {
             anchors.right: background.right
             onClicked: {
 
-                     Activity.nextLevel()
+                Activity.nextLevel()
 
 
             }
