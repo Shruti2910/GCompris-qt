@@ -24,7 +24,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -376,7 +376,7 @@
        x2="321.89355"
        y1="385.54776"
        x1="325.78271"
-       gradientTransform="matrix(1.235019,0,0,0.8019667,-809.08004,-305.56444)"
+       gradientTransform="matrix(1.235019,0,0,0.8019667,-804.98555,-304.54082)"
        gradientUnits="userSpaceOnUse"
        id="linearGradient3596"
        xlink:href="#linearGradient611"
@@ -3696,13 +3696,13 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1355"
-     inkscape:window-height="712"
+     inkscape:window-width="1354"
+     inkscape:window-height="707"
      id="namedview4"
      showgrid="false"
      inkscape:zoom="0.97692308"
      inkscape:cx="387.25327"
-     inkscape:cy="71.115999"
+     inkscape:cy="271.09927"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -3710,21 +3710,21 @@
   <image
      sodipodi:absref="/home/rajdeeep/GCompris-qt/src/activities/parachute/resource/./paratrooper-activity/resources/paratrooper/scenery3_background.png"
      xlink:href="./paratrooper-activity/resources/paratrooper/scenery3_background.png"
-     y="0"
-     x="0"
-     id="image10"
+     width="800"
      height="520"
-     width="800" />
+     id="image10"
+     x="0"
+     y="0" />
   <rect
      style="font-size:12px;fill:url(#linearGradient3596);fill-rule:evenodd;stroke-width:1"
      id="rect606"
      width="802.13959"
      height="520.87415"
-     x="-805.40051"
-     y="-0.43706653"
+     x="-801.30603"
+     y="0.58655554"
      transform="scale(-1,1)" />
   <g
-     transform="matrix(0.65286042,0,0,1,-13.203958,142.70538)"
+     transform="matrix(0.6527673,0,0,1.2844072,-13.169362,77.089321)"
      id="layer1-1"
      inkscape:label="Layer 1">
     <g
@@ -3793,7 +3793,7 @@
   </g>
   <path
      style="fill:#00a4b0;fill-opacity:1;stroke:none"
-     d="M -1.2676774,367.51153 C 235.07146,370.1386 614.55257,297.86351 864.06865,521.18219 L -1.6224183,518.02271 Z"
+     d="M -1.2676774,360.74802 C 235.07146,363.49071 614.55257,288.03458 864.06865,521.18219 L -1.6224183,517.88365 Z"
      id="rect3217"
      inkscape:connector-curvature="0"
      sodipodi:nodetypes="cccc" />
@@ -4901,7 +4901,7 @@
     </g>
   </g>
   <g
-     transform="matrix(0.57409292,0,0,0.57409292,32.8155,-97.004798)"
+     transform="matrix(0.57409292,0,0,0.57409292,-65.452216,-91.886688)"
      id="g2204">
     <g
        id="g734"
@@ -5020,7 +5020,7 @@
            inkscape:connector-curvature="0" />
       </g>
       <path
-         style="font-size:12px;fill:url(#linearGradient2259);fill-opacity:0.25410061;fill-rule:evenodd;stroke-width:1"
+         style="font-size:12px;fill:url(#linearGradient2259);fill-opacity:0.25410066;fill-rule:evenodd;stroke-width:1"
          d="m 422.2995,808.9001 c 1.7981,4.604 7.4732,16.6738 3.1509,19.2527 -6.84,3.8996 -46.7313,-23.1327 -74.2953,-63.5244 -66.9358,-9.2845 -130.0065,-69.6221 -141.8588,-79.7845 -1.0192,-0.7567 -3.3743,0.5644 -7.8682,0.3662 -3.9714,0.0727 -14.0872,6.2846 -15.8087,6.6685 -3.4392,0.6522 -4.8777,-1.6016 -8.2092,-0.9263 -2.2401,0.4773 -2.6575,3.0744 -7.1589,3.399 -5.3358,0.3752 -7.9999,-0.2449 -8.8535,0.1879 -5.1054,2.2815 -16.2081,8.4132 -18.9478,4.9697 -3.7733,-6.1985 11.2491,-28.4484 23.7608,-45.6854 95.5024,42.452 320.0393,-15.3813 288.5732,-37.4202 8.5937,4.5914 18.8144,10.0374 35.5041,20.4894 11.4097,-0.1084 18.9928,0.5569 22.4361,2.0855 1.3178,0.7888 3.9013,2.3627 6.6399,4.5203 2.4297,2.0951 6.0533,3.2657 8.6122,4.831 3.3219,2.1213 7.6616,7.4024 8.9273,9.1327 0.5351,0.7105 5.9514,2.252 11.1522,6.5266 5.3497,4.1674 6.6491,6.0325 8.6605,8.094 4.3184,0.4668 13.3246,9.4138 16.2985,15.3028 4.8106,4.0523 7.262,7.8015 9.4902,10.7284 3.8358,5.8712 7.1769,12.601 7.8984,14.8826 19.8459,15.0992 51.1183,104.6658 43.9895,135.3324 34.4239,20.795 92.2615,88.149 82.6415,94.841 -8.885,5.7913 -13.6834,-17.3238 -73.906,-27.2907 -2.3587,-0.3874 -18.2835,-15.3459 -16.9956,-25.0852 -1.2115,-1.9494 -6.128,13.0199 -9.7917,12.8154 -2.1297,-0.1268 -32.52,-30.4473 -48.2879,-26.9924 -10.7289,-13.0299 -24.5858,-44.2685 25.2326,-48.6615 -31.9975,-61.4759 -114.2403,-48.7731 -177.2975,-55.5515 1.9121,3.6671 4.4675,9.9586 4.9367,12.6514 0.4204,2.2973 -1.5728,3.4189 -1.5098,6.4006 0.2503,2.5514 2.8709,5.413 3.0221,6.3125 0.5137,2.5683 -0.7828,9.5212 -0.1378,11.1315 z"
          id="path733"
          sodipodi:nodetypes="cscccssssccccsssssccsccsscscccssss"

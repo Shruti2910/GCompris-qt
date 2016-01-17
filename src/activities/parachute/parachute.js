@@ -34,6 +34,9 @@ var uppressed
 var downpressed
 var Oneclick
 var winlose
+var minitux="minitux.svg"
+var parachutetux="parachute.svg"
+var tuxImageStatus =1
 
 function start(items_) {
     items = items_
@@ -46,9 +49,6 @@ function stop() {
     items.loop.stop()
     items.loopcloud.restart()
     items.animationboat.stop()
-    items.parachuteanimation.stop()
-    items.minitux.visible=false
-    items.parachuteImage.visible=false
 }
 
 function initLevel() {
@@ -56,15 +56,17 @@ function initLevel() {
     checkPressed = 0
     winlose = 0
     Oneclick = 0
+    tuxImageStatus = 1
     items.ok.visible = false
     items.loop.restart()
+    items.tuxX.restart()
     items.loopcloud.restart()
     items.animationboat.restart()
-    items.parachuteanimationx.restart()
+
 }
 
 function processPressedKey(event) {
-    switch(event.key) {
+    /*switch(event.key) {
     case Qt.Key_Up : event.accepted = true;
         if(checkPressed === 0) {
             uppressed = true;
@@ -93,12 +95,12 @@ function processPressedKey(event) {
 
         break;
     }
-
+   */
 
 }
 
 function processReleasedKey(event) {
-    switch(event.key) {
+   /* switch(event.key) {
     case Qt.Key_Up : event.accepted = true;
         uppressed = false;
         items.parachuteanimationup.stop()
@@ -111,20 +113,15 @@ function processReleasedKey(event) {
         items.parachuteanimationreldown.restart()
         break;
     }
-
+   */
 }
 
-function parachuefun(){
-    items.parachuteanimationx.stop()
-    items.parachuteanimation.restart()
-}
 
 function nextLevel() {
     if(numberOfLevel <= ++currentLevel ) {
         currentLevel = 0
     }
     items.keyunable.visible=false
-    items.parachuteImage.visible=false
     items.ok.visible = false
     winlose = 0
     Oneclick = 0
@@ -136,6 +133,5 @@ function previousLevel() {
         currentLevel = numberOfLevel - 1
     }
     items.keyunable.visible=false
-    items.parachuteImage.visible=false
     initLevel();
 }

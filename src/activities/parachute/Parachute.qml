@@ -62,23 +62,16 @@ ActivityBase {
             property Item main: activity.main
             property alias background: background
             property alias animationheli:animationheli
-            property alias parachuteanimationx:parachuteanimationx
-            property alias minitux:minitux
             property alias animationcloud:animationcloud
             property alias bar: bar
             property alias bonus: bonus
-            property alias parachuteImage:parachuteImage
             property alias helicopter: helicopter
             property alias animationboat:animationboat
-            property alias parachuteanimation:parachuteanimation
             property alias keyunable:keyunable
-            property alias parachuteanimationup:parachuteanimationup
-            property alias parachuteanimationdown:parachuteanimationdown
-            property alias parachuteanimationrelup: parachuteanimationrelup
-            property alias parachuteanimationreldown: parachuteanimationreldown
             property alias ok: ok
             property alias loop:loop
             property alias loopcloud:loopcloud
+            property alias tuxX:tuxX
 
         }
 
@@ -113,13 +106,13 @@ ActivityBase {
 
         Item{
             id:helimotion
-            width:(bar.level===1?background.width/6:bar.level===2?background.width/4:bar.level===3?background.width/20:bar.level===4?background.width/7:background.width/7)
-            height:(bar.level===1?background.height/6:bar.level===2?background.height/4:bar.level===3?background.height/20:bar.level===4?background.height/7:background.height/7)
+            width:(bar.level===1?background.width/6:bar.level===2?background.width/4:bar.level===3?background.width/11:bar.level===4?background.width/7:background.width/7)
+            height:(bar.level===1?background.height/6:bar.level===2?background.height/4:bar.level===3?background.height/11:bar.level===4?background.height/7:background.height/7)
             x: -width
             Rectangle{
                 id:forhover
-                width:(bar.level===1?background.width/6:bar.level===2?background.width/4:bar.level===3?background.width/20:bar.level===4?background.width/7:background.width/7)
-                height:(bar.level===1?background.height/6:bar.level===2?background.height/4:bar.level===3?background.height/20:bar.level===4?background.height/7:background.height/7)
+                width:(bar.level===1?background.width/6:bar.level===2?background.width/4:bar.level===3?background.width/11:bar.level===4?background.width/7:background.width/7)
+                height:(bar.level===1?background.height/6:bar.level===2?background.height/4:bar.level===3?background.height/11:bar.level===4?background.height/7:background.height/7)
                 visible:false
                 border.width:7
                 radius:20
@@ -129,8 +122,8 @@ ActivityBase {
             Image{
                 id:helicopter
                 source:activity.dataSetUrl+"tuxplane.svg"
-                width:(bar.level===1?background.width/6:bar.level===2?background.width/4:bar.level===3?background.width/20:bar.level===4?background.width/7:background.width/7)
-                height:(bar.level===1?background.height/6:bar.level===2?background.height/4:bar.level===3?background.height/20:bar.level===4?background.height/7:background.height/7)
+                width:(bar.level===1?background.width/6:bar.level===2?background.width/4:bar.level===3?background.width/11:bar.level===4?background.width/7:background.width/7)
+                height:(bar.level===1?background.height/6:bar.level===2?background.height/4:bar.level===3?background.height/11:bar.level===4?background.height/7:background.height/7)
                 MouseArea {
                     id:mousei
                     hoverEnabled: true
@@ -143,8 +136,7 @@ ActivityBase {
                     }
                     onClicked:{
                         if(Activity.Oneclick === 0) {
-                            minitux.visible=true
-                            Activity.parachuefun()
+                            tuximage.visible=true
                             Activity.Oneclick = 1;
                         }
                     }
@@ -169,17 +161,17 @@ ActivityBase {
             }
         }
 
-        Item{
-            id:parachutOpen
+        /* Item{
+            id:tux
             onYChanged:{
 
-                if(( parachutOpen.y >= background.height/1.4 )&&(Activity.winlose === 0)) {
-                    if((parachutOpen.x >= boatmotion.x) && (parachutOpen.x <= (boatmotion.x+boatmotion.width))) {
+                if(( tux.y >= background.height/1.4 )&&(Activity.winlose === 0)) {
+                    if((tux.x >= boatmotion.x) && (tux.x <= (boatmotion.x+boatmotion.width))) {
                         bonus.good("smiley")
                         Activity.winlose = 1
                     }
-                    if((parachutOpen.y >= background.height/1.2)&&(Activity.winlose === 0)) {
-                        if((parachutOpen.x <= boatmotion.x) || (parachutOpen.x >= (boatmotion.x+boatmotion.width))) {
+                    if((tux.y >= background.height/1.2)&&(Activity.winlose === 0)) {
+                        if((tux.x <= boatmotion.x) || (tux.x >= (boatmotion.x+boatmotion.width))) {
                             bonus.bad("smiley")
                             Activity.winlose = 1
 
@@ -211,7 +203,7 @@ ActivityBase {
                 }
                 PropertyAnimation{
                     id:parachuteanimation
-                    target:parachutOpen
+                    target:tux
                     properties: "y"
                     from:helicopter.height
                     to:background.height/1.2
@@ -221,9 +213,9 @@ ActivityBase {
 
                 PropertyAnimation{
                     id:parachuteanimationup
-                    target:parachutOpen
+                    target:tux
                     properties:  "y"
-                    from:parachutOpen.y
+                    from:tux.y
                     to:background.height/1.2
                     duration:(bar.level === 1 ? 30000 : bar.level === 2 ? 26000 : bar.level === 3 ? 20000 : bar.level === 4 ? 15000 : 9000)
                     easing.type:Easing.Linear
@@ -231,9 +223,9 @@ ActivityBase {
 
                 PropertyAnimation{
                     id:parachuteanimationdown
-                    target:parachutOpen
+                    target:tux
                     properties:  "y"
-                    from:parachutOpen.y
+                    from:tux.y
                     to:background.height/1.2
                     duration:(bar.level === 1 ? 6000 : bar.level === 2 ? 5000 : bar.level === 3 ? 4000 : bar.level === 4 ? 2000 : 9000)
                     easing.type:Easing.Linear
@@ -242,9 +234,9 @@ ActivityBase {
 
                 PropertyAnimation{
                     id:parachuteanimationrelup
-                    target:parachutOpen
+                    target:tux
                     properties:  "y"
-                    from:parachutOpen.y
+                    from:tux.y
                     to:background.height/1.2
                     duration:(bar.level === 1 ? 15000 : bar.level === 2 ? 14000 : bar.level === 3 ? 13000 : bar.level === 4 ? 10000 : 9000)
                     easing.type:Easing.Linear
@@ -253,9 +245,9 @@ ActivityBase {
 
                 PropertyAnimation{
                     id:parachuteanimationreldown
-                    target:parachutOpen
+                    target:tux
                     properties:  "y"
-                    from:parachutOpen.y
+                    from:tux.y
                     to:background.height/1.2
                     duration:(bar.level === 1 ? 10000 : bar.level === 2 ? 9000 : bar.level === 3 ? 7000 : bar.level === 4 ? 5000 : 9000)
                     easing.type:Easing.Linear
@@ -265,14 +257,99 @@ ActivityBase {
 
                 PropertyAnimation{
                     id:parachuteanimationx
-                    target:parachutOpen
+                    target:tux
                     properties: "x"
                     from:-helimotion.width
                     to:background.width
                     duration:(bar.level === 1 ? 20000 : bar.level === 2 ? 16000 : bar.level === 3 ? 12000 : bar.level === 4 ? 10000 : 9000)
                 }
             }
+        }*/
+
+        Item {
+            id:tux
+            width:tuximage.width
+            height:tuximage.height
+            Image {
+                id: tuximage
+                source:activity.dataSetUrl+Activity.minitux
+
+                visible:false
+                MouseArea{
+                    id:tuxmouse
+                    anchors.fill:parent
+                    onClicked:{
+                        tuximage.source=activity.dataSetUrl+Activity.parachutetux
+                    }
+                }
+
+            }
+
+            /*PropertyAnimation{
+                id:parachuteanimation
+                target:tux
+                properties: "y"
+                from:helicopter.height
+                to:background.height/1.2
+                duration:(bar.level === 1 ? 15000 : bar.level === 2 ? 14000 : bar.level === 3 ? 13000 : bar.level === 4 ? 10000 : 9000)
+                easing.type:Easing.Linear
+            }
+
+            PropertyAnimation{
+                id:parachuteanimationup
+                target:tux
+                properties:  "y"
+                from:tux.y
+                to:background.height/1.2
+                duration:(bar.level === 1 ? 30000 : bar.level === 2 ? 26000 : bar.level === 3 ? 20000 : bar.level === 4 ? 15000 : 9000)
+                easing.type:Easing.Linear
+            }
+
+            PropertyAnimation{
+                id:parachuteanimationdown
+                target:tux
+                properties:  "y"
+                from:tux.y
+                to:background.height/1.2
+                duration:(bar.level === 1 ? 6000 : bar.level === 2 ? 5000 : bar.level === 3 ? 4000 : bar.level === 4 ? 2000 : 9000)
+                easing.type:Easing.Linear
+
+            }
+
+            PropertyAnimation{
+                id:parachuteanimationrelup
+                target:tux
+                properties:  "y"
+                from:tux.y
+                to:background.height/1.2
+                duration:(bar.level === 1 ? 15000 : bar.level === 2 ? 14000 : bar.level === 3 ? 13000 : bar.level === 4 ? 10000 : 9000)
+                easing.type:Easing.Linear
+
+            }
+
+            PropertyAnimation{
+                id:parachuteanimationreldown
+                target:tux
+                properties:  "y"
+                from:tux.y
+                to:background.height/1.2
+                duration:(bar.level === 1 ? 10000 : bar.level === 2 ? 9000 : bar.level === 3 ? 7000 : bar.level === 4 ? 5000 : 9000)
+                easing.type:Easing.Linear
+            }*/
+
+            PropertyAnimation{
+                id:tuxX
+                target:tux
+                properties: "x"
+                from:-helimotion.width
+                to:background.width
+                duration:(bar.level === 1 ? 20000 : bar.level === 2 ? 16000 : bar.level === 3 ? 12000 : bar.level === 4 ? 10000 : 9000)
+            }
+
+
+
         }
+
         Item{
             id:cloudmotion
             width:cloud.width
@@ -285,52 +362,52 @@ ActivityBase {
             SequentialAnimation{
                 id:loopcloud
                 loops: Animation.Infinite
-            PropertyAnimation {
-                id:animationcloud
-                target:cloudmotion
-                properties:"x"
-                from:background.width
-                to:-cloud.width
-                duration:(bar.level === 1 ? 19000 : bar.level === 2 ? 15000 : bar.level === 3 ? 11000 : bar.level === 4 ? 9000 : 9000)
-                easing.type:Easing.Linear
-            }
-            PropertyAnimation {
-                id:animationcloud1
-                target:cloudmotion
-                properties:"x"
-                from:background.width
-                to:-cloud.width
-                duration:(bar.level === 1 ? 19000 : bar.level === 2 ? 15000 : bar.level === 3 ? 11000 : bar.level === 4 ? 9000 : 9000)
-                easing.type:Easing.Linear
-            }
-            PropertyAnimation {
-                id:animationcloud2
-                target:cloudmotion
-                properties:"x"
-                from:-cloud.width
-                to:background.width
-                duration:(bar.level === 1 ? 19000 : bar.level === 2 ? 15000 : bar.level === 3 ? 11000 : bar.level === 4 ? 9000 : 9000)
-                easing.type:Easing.Linear
-            }
-            PropertyAnimation {
-                id:animationcloud3
-                target:cloudmotion
-                properties:"x"
-                from:background.width
-                to:-cloud.width
-                duration:(bar.level === 1 ? 19000 : bar.level === 2 ? 15000 : bar.level === 3 ? 11000 : bar.level === 4 ? 9000 : 9000)
-                easing.type:Easing.Linear
-            }
+                PropertyAnimation {
+                    id:animationcloud
+                    target:cloudmotion
+                    properties:"x"
+                    from:Math.random() < 0.5 ? background.width : -cloud.width
+                    to:animationcloud.from === background.width ? -cloud.width : background.width
+                    duration:(bar.level === 1 ? 19000 : bar.level === 2 ? 15000 : bar.level === 3 ? 11000 : bar.level === 4 ? 9000 : 9000)
+                    easing.type:Easing.Linear
+                }
+                PropertyAnimation {
+                    id:animationcloud1
+                    target:cloudmotion
+                    properties:"x"
+                    from:background.width
+                    to:-cloud.width
+                    duration:(bar.level === 1 ? 19000 : bar.level === 2 ? 15000 : bar.level === 3 ? 11000 : bar.level === 4 ? 9000 : 9000)
+                    easing.type:Easing.Linear
+                }
+                PropertyAnimation {
+                    id:animationcloud2
+                    target:cloudmotion
+                    properties:"x"
+                    from:-cloud.width
+                    to:background.width
+                    duration:(bar.level === 1 ? 19000 : bar.level === 2 ? 15000 : bar.level === 3 ? 11000 : bar.level === 4 ? 9000 : 9000)
+                    easing.type:Easing.Linear
+                }
+                PropertyAnimation {
+                    id:animationcloud3
+                    target:cloudmotion
+                    properties:"x"
+                    from:background.width
+                    to:-cloud.width
+                    duration:(bar.level === 1 ? 19000 : bar.level === 2 ? 15000 : bar.level === 3 ? 11000 : bar.level === 4 ? 9000 : 9000)
+                    easing.type:Easing.Linear
+                }
 
-            PropertyAnimation {
-                id:animationcloud4
-                target:cloudmotion
-                properties:"x"
-                from:-cloud.width
-                to:background.width
-                duration:(bar.level === 1 ? 19000 : bar.level === 2 ? 15000 : bar.level === 3 ? 11000 : bar.level === 4 ? 9000 : 9000)
-                easing.type:Easing.Linear
-            }
+                PropertyAnimation {
+                    id:animationcloud4
+                    target:cloudmotion
+                    properties:"x"
+                    from:-cloud.width
+                    to:background.width
+                    duration:(bar.level === 1 ? 19000 : bar.level === 2 ? 15000 : bar.level === 3 ? 11000 : bar.level === 4 ? 9000 : 9000)
+                    easing.type:Easing.Linear
+                }
 
 
             }
