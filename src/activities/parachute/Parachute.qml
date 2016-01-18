@@ -72,7 +72,10 @@ ActivityBase {
             property alias loop:loop
             property alias loopcloud:loopcloud
             property alias tuxX:tuxX
-
+            property alias tuxY:tuxY
+            property alias tuxXWithY: tuxXWithY
+            property alias tux:tux
+            property alias tuximage:tuximage
         }
 
         IntroMessage {
@@ -101,6 +104,14 @@ ActivityBase {
                 left: parent.left
                 leftMargin: 5
             }
+        }
+
+        GCText {
+            id:keyunable
+            anchors.centerIn: parent
+            fontSize: largeSize
+            visible:false
+            text:qsTr("Control fall speed with up and down arrow keys")
         }
 
 
@@ -135,9 +146,12 @@ ActivityBase {
                         forhover.visible=false
                     }
                     onClicked:{
-                        if(Activity.Oneclick === 0) {
+                        if(Activity.Oneclick === false) {
                             tuximage.visible=true
-                            Activity.Oneclick = 1;
+                            tuxX.stop()
+                            tuxXWithY.start()
+                            tuxY.start()
+                            Activity.Oneclick = true;
                         }
                     }
 
@@ -161,110 +175,6 @@ ActivityBase {
             }
         }
 
-        /* Item{
-            id:tux
-            onYChanged:{
-
-                if(( tux.y >= background.height/1.4 )&&(Activity.winlose === 0)) {
-                    if((tux.x >= boatmotion.x) && (tux.x <= (boatmotion.x+boatmotion.width))) {
-                        bonus.good("smiley")
-                        Activity.winlose = 1
-                    }
-                    if((tux.y >= background.height/1.2)&&(Activity.winlose === 0)) {
-                        if((tux.x <= boatmotion.x) || (tux.x >= (boatmotion.x+boatmotion.width))) {
-                            bonus.bad("smiley")
-                            Activity.winlose = 1
-
-                        }
-                    }
-
-                }
-            }
-            Image{
-                id:parachuteImage
-                visible:false
-                source:activity.dataSetUrl+"parachute.svg"
-
-
-            }
-            Image{
-                id:minitux
-                visible:false
-                source:activity.dataSetUrl+"minitux.svg"
-                MouseArea{
-                    id:paramouse
-                    anchors.fill:parent
-                    onClicked:{
-                        minitux.visible=false
-                        parachuteImage.visible=true
-                        keyunable.visible=true
-
-                    }
-                }
-                PropertyAnimation{
-                    id:parachuteanimation
-                    target:tux
-                    properties: "y"
-                    from:helicopter.height
-                    to:background.height/1.2
-                    duration:(bar.level === 1 ? 15000 : bar.level === 2 ? 14000 : bar.level === 3 ? 13000 : bar.level === 4 ? 10000 : 9000)
-                    easing.type:Easing.Linear
-                }
-
-                PropertyAnimation{
-                    id:parachuteanimationup
-                    target:tux
-                    properties:  "y"
-                    from:tux.y
-                    to:background.height/1.2
-                    duration:(bar.level === 1 ? 30000 : bar.level === 2 ? 26000 : bar.level === 3 ? 20000 : bar.level === 4 ? 15000 : 9000)
-                    easing.type:Easing.Linear
-                }
-
-                PropertyAnimation{
-                    id:parachuteanimationdown
-                    target:tux
-                    properties:  "y"
-                    from:tux.y
-                    to:background.height/1.2
-                    duration:(bar.level === 1 ? 6000 : bar.level === 2 ? 5000 : bar.level === 3 ? 4000 : bar.level === 4 ? 2000 : 9000)
-                    easing.type:Easing.Linear
-
-                }
-
-                PropertyAnimation{
-                    id:parachuteanimationrelup
-                    target:tux
-                    properties:  "y"
-                    from:tux.y
-                    to:background.height/1.2
-                    duration:(bar.level === 1 ? 15000 : bar.level === 2 ? 14000 : bar.level === 3 ? 13000 : bar.level === 4 ? 10000 : 9000)
-                    easing.type:Easing.Linear
-
-                }
-
-                PropertyAnimation{
-                    id:parachuteanimationreldown
-                    target:tux
-                    properties:  "y"
-                    from:tux.y
-                    to:background.height/1.2
-                    duration:(bar.level === 1 ? 10000 : bar.level === 2 ? 9000 : bar.level === 3 ? 7000 : bar.level === 4 ? 5000 : 9000)
-                    easing.type:Easing.Linear
-                }
-
-
-
-                PropertyAnimation{
-                    id:parachuteanimationx
-                    target:tux
-                    properties: "x"
-                    from:-helimotion.width
-                    to:background.width
-                    duration:(bar.level === 1 ? 20000 : bar.level === 2 ? 16000 : bar.level === 3 ? 12000 : bar.level === 4 ? 10000 : 9000)
-                }
-            }
-        }*/
 
         Item {
             id:tux
@@ -272,82 +182,74 @@ ActivityBase {
             height:tuximage.height
             Image {
                 id: tuximage
-                source:activity.dataSetUrl+Activity.minitux
-
+                source: activity.dataSetUrl+Activity.minitux
                 visible:false
                 MouseArea{
                     id:tuxmouse
                     anchors.fill:parent
                     onClicked:{
-                        tuximage.source=activity.dataSetUrl+Activity.parachutetux
+                        if(Activity.tuxImageStatus === 1) {
+                            keyunable.visible = true
+                            tuximage.source = activity.dataSetUrl+Activity.parachutetux
+
+                        }
                     }
                 }
 
+                states :[
+                    State{
+                        name:"Upressed"
+                        PropertyChanges {
+                            target:tux
+                            properties:"y"
+                            duration:70000
+                        }
+
+                    },
+                    State{
+                        name:"Downpressed"
+                        PropertyChanges {
+                            target:tux
+                            properties:"y"
+                            duration:2000
+                        }
+                    },
+                    State{
+                        name:"relesed"
+                        PropertyChanges {
+                            target:tux
+                            properties:"y"
+                            duration:(bar.level === 1 ? 20000 : bar.level === 2 ? 16000 : bar.level === 3 ? 12000 : bar.level === 4 ? 10000 : 9000)
+                        }
+                    }
+                ]
+
+                PropertyAnimation{
+                    id:tuxX
+                    target:tux
+                    properties: "x"
+                    from:-helimotion.width
+                    to:background.width
+                    duration:(bar.level === 1 ? 20000 : bar.level === 2 ? 16000 : bar.level === 3 ? 12000 : bar.level === 4 ? 10000 : 9000)
+                }
+                PropertyAnimation{
+                    id:tuxXWithY
+                    target:tux
+                    properties: "x"
+                    from:tuxX.x
+                    to:background.width
+                    duration:(bar.level === 1 ? 50000 : bar.level === 2 ? 45000 : bar.level === 3 ? 40000 : bar.level === 4 ? 30000 : 9000)
+                }
+
+                PropertyAnimation{
+                    id:tuxY
+                    target:tux
+                    properties: "y"
+                    from:tuxX.y
+                    to:background.height/1.3
+                    duration:(bar.level === 1 ? 20000 : bar.level === 2 ? 16000 : bar.level === 3 ? 12000 : bar.level === 4 ? 10000 : 9000)
+                }
             }
-
-            /*PropertyAnimation{
-                id:parachuteanimation
-                target:tux
-                properties: "y"
-                from:helicopter.height
-                to:background.height/1.2
-                duration:(bar.level === 1 ? 15000 : bar.level === 2 ? 14000 : bar.level === 3 ? 13000 : bar.level === 4 ? 10000 : 9000)
-                easing.type:Easing.Linear
-            }
-
-            PropertyAnimation{
-                id:parachuteanimationup
-                target:tux
-                properties:  "y"
-                from:tux.y
-                to:background.height/1.2
-                duration:(bar.level === 1 ? 30000 : bar.level === 2 ? 26000 : bar.level === 3 ? 20000 : bar.level === 4 ? 15000 : 9000)
-                easing.type:Easing.Linear
-            }
-
-            PropertyAnimation{
-                id:parachuteanimationdown
-                target:tux
-                properties:  "y"
-                from:tux.y
-                to:background.height/1.2
-                duration:(bar.level === 1 ? 6000 : bar.level === 2 ? 5000 : bar.level === 3 ? 4000 : bar.level === 4 ? 2000 : 9000)
-                easing.type:Easing.Linear
-
-            }
-
-            PropertyAnimation{
-                id:parachuteanimationrelup
-                target:tux
-                properties:  "y"
-                from:tux.y
-                to:background.height/1.2
-                duration:(bar.level === 1 ? 15000 : bar.level === 2 ? 14000 : bar.level === 3 ? 13000 : bar.level === 4 ? 10000 : 9000)
-                easing.type:Easing.Linear
-
-            }
-
-            PropertyAnimation{
-                id:parachuteanimationreldown
-                target:tux
-                properties:  "y"
-                from:tux.y
-                to:background.height/1.2
-                duration:(bar.level === 1 ? 10000 : bar.level === 2 ? 9000 : bar.level === 3 ? 7000 : bar.level === 4 ? 5000 : 9000)
-                easing.type:Easing.Linear
-            }*/
-
-            PropertyAnimation{
-                id:tuxX
-                target:tux
-                properties: "x"
-                from:-helimotion.width
-                to:background.width
-                duration:(bar.level === 1 ? 20000 : bar.level === 2 ? 16000 : bar.level === 3 ? 12000 : bar.level === 4 ? 10000 : 9000)
-            }
-
-
-
         }
 
         Item{
@@ -438,13 +340,7 @@ ActivityBase {
         }
 
 
-        GCText {
-            id:keyunable
-            anchors.centerIn: parent
-            fontSize: largeSize
-            visible:false
-            text:"Control fall speed with up and down arrow keys"
-        }
+
 
         DialogHelp {
             id: dialogHelp
@@ -479,7 +375,7 @@ ActivityBase {
         Bonus {
             id: bonus
             interval: 2000
-            onLoose: ok.visible = true
+            onLoose:Activity.onLose()
             onWin:ok.visible = true
 
         }
@@ -488,3 +384,4 @@ ActivityBase {
     }
 
 }
+

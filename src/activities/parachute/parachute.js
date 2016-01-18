@@ -29,7 +29,7 @@
 var currentLevel = 0
 var numberOfLevel = 4
 var items
-var checkPressed = 0
+var checkPressed = false
 var uppressed
 var downpressed
 var Oneclick
@@ -53,9 +53,9 @@ function stop() {
 
 function initLevel() {
     items.bar.level = currentLevel + 1
-    checkPressed = 0
-    winlose = 0
-    Oneclick = 0
+    checkPressed = false
+    winlose = false
+    Oneclick = false
     tuxImageStatus = 1
     items.ok.visible = false
     items.loop.restart()
@@ -65,57 +65,50 @@ function initLevel() {
 
 }
 
-function processPressedKey(event) {
-    /*switch(event.key) {
-    case Qt.Key_Up : event.accepted = true;
-        if(checkPressed === 0) {
-            uppressed = true;
-            items.parachuteanimation.stop()
-            items.parachuteanimationup.restart()
-            checkPressed = 1;
-        }
-        else {
-            uppressed = true;
-            items.parachuteanimationrelup.stop()
-            items.parachuteanimationup.restart()
-        }
-        break;
-    case Qt.Key_Down : event.accepted = true;
-        if(checkPressed === 0) {
-            downpressed = true;
-            items.parachuteanimation.stop()
-            items.parachuteanimationdown.restart()
-            checkPressed = 1;
-        }
-        else {
-            downpressed = true;
-            items.parachuteanimationreldown.stop()
-            items.parachuteanimationdown.restart()
-        }
+function onLose(){
+   checkPressed =false
+   winlose = false
+   Oneclick = false
+   tuxImageStatus = 1
+   items.loop.stop()
+   items.loopcloud.restart()
+   items.animationboat.stop()
+   items.tuxX.stop()
+   items.tuxY.stop()
+   items.tuxXWithY.stop()
+   items.tux.visible = false
 
-        break;
+    items.loop.restart()
+    items.tuxX.restart()
+    items.loopcloud.restart()
+    items.animationboat.restart()
+
+}
+
+function processPressedKey(event) {
+    switch(event.key) {
+    case Qt.Key_Up : event.accepted = true;
+          items.tux.state = "Upressed"
+          break;
+    case Qt.Key_Down : event.accepted = true;
+           items.tux.state = "Downpressed"
+           break;
     }
-   */
+
 
 }
 
 function processReleasedKey(event) {
-   /* switch(event.key) {
+   switch(event.key) {
     case Qt.Key_Up : event.accepted = true;
-        uppressed = false;
-        items.parachuteanimationup.stop()
-        items.parachuteanimationrelup.restart()
-
-        break;
+         items.tux.state ="relesed";
+         break;
     case Qt.Key_Down : event.accepted = true;
-        downpressed = false;
-        items.parachuteanimationdown.stop()
-        items.parachuteanimationreldown.restart()
+        items.tux.state = "relesed"
         break;
     }
-   */
-}
 
+}
 
 function nextLevel() {
     if(numberOfLevel <= ++currentLevel ) {
@@ -123,8 +116,8 @@ function nextLevel() {
     }
     items.keyunable.visible=false
     items.ok.visible = false
-    winlose = 0
-    Oneclick = 0
+    winlose = false
+    Oneclick = false
     initLevel();
 }
 
@@ -135,3 +128,4 @@ function previousLevel() {
     items.keyunable.visible=false
     initLevel();
 }
+
