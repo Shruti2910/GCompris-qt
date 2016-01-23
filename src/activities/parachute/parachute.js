@@ -22,7 +22,7 @@
 
 .pragma library
 .import QtQuick 2.0 as Quick
-.import GCompris 1.0 as GCompris 
+.import GCompris 1.0 as GCompris
 .import "qrc:/gcompris/src/core/core.js" as Core
 
 
@@ -30,10 +30,11 @@ var currentLevel = 0
 var numberOfLevel = 4
 var items
 var checkPressed = false
-var uppressed
-var downpressed
+var ycheck
+var pressed
 var Oneclick
 var winlose
+var loseflag = false
 var minitux="minitux.svg"
 var parachutetux="parachute.svg"
 var tuxImageStatus =1
@@ -41,7 +42,6 @@ var tuxImageStatus =1
 function start(items_) {
     items = items_
     currentLevel = 0
-
     initLevel()
 }
 
@@ -52,11 +52,14 @@ function stop() {
 }
 
 function initLevel() {
-    items.bar.level = currentLevel + 1
+    if(loseflag==false){   items.bar.level = currentLevel + 1   }
     checkPressed = false
     winlose = false
     Oneclick = false
-    tuxImageStatus = 1
+    pressed = false
+    ycheck = false
+    loseflag =false
+    tuxImageStatus = 0
     items.ok.visible = false
     items.loop.restart()
     items.tuxX.restart()
@@ -66,46 +69,102 @@ function initLevel() {
 }
 
 function onLose(){
-   checkPressed =false
-   winlose = false
-   Oneclick = false
-   tuxImageStatus = 1
-   items.loop.stop()
-   items.loopcloud.restart()
-   items.animationboat.stop()
-   items.tuxX.stop()
-   items.tuxY.stop()
-   items.tuxXWithY.stop()
-   items.tux.visible = false
+    items.loop.stop()
+    items.loopcloud.stop()
+    items.animationboat.stop()
+    items.tuxX.stop()
+    items.tuxY.stop()
+    items.onReleas.stop()
+    items.onPressUp.stop()
+    items.onPressdown.stop()
+    tuxImageStatus = 0
 
+    items.bonus.bad("lion")
+
+    items.tux.visible = false
+    checkPressed =false
+    winlose = false
+    Oneclick = false
+    ycheck = false
+    pressed = false
+    loseflag = true
+    items.tux.x=-items.helimotion.width
+    items.tux.y=0
     items.loop.restart()
     items.tuxX.restart()
     items.loopcloud.restart()
     items.animationboat.restart()
+    initLevel()
+
+}
+
+function onWin(){
+    items.loop.stop()
+    items.loopcloud.stop()
+    items.animationboat.stop()
+    items.tuxX.stop()
+    items.tuxY.stop()
+    items.onReleas.stop()
+    items.onPressUp.stop()
+    items.onPressdown.stop()
+    items.tux.visible = false
+    checkPressed =false
+    winlose = false
+    Oneclick = false
+    ycheck = false
+    pressed = false
+    loseflag = true
+    items.bonus.good("lion");
+    items.ok.visible = true
 
 }
 
 function processPressedKey(event) {
-    switch(event.key) {
-    case Qt.Key_Up : event.accepted = true;
-          items.tux.state = "Upressed"
-          break;
-    case Qt.Key_Down : event.accepted = true;
-           items.tux.state = "Downpressed"
-           break;
+    if(tuxImageStatus===2){
+        switch(event.key) {
+        case Qt.Key_Up : event.accepted = true;
+            if(pressed===false){
+                items.tuxY.stop()
+                items.onPressUp.restart()
+                pressed=true
+            }else{
+                items.onReleas.stop()
+                items.onPressUp.restart()
+            }
+            console.log("up");
+            break;
+        case Qt.Key_Down : event.accepted = true;
+            if(pressed===false){
+                items.tuxY.stop()
+                items.onPressdown.restart()
+                pressed=true
+            }else{
+                items.onReleas.restart()
+                items.onPressdown.restart()
+            }
+            console.log("down");
+            break;
+        }
+        if(ycheck===false){
+            ycheck=true
+        }
     }
-
 
 }
 
 function processReleasedKey(event) {
-   switch(event.key) {
-    case Qt.Key_Up : event.accepted = true;
-         items.tux.state ="relesed";
-         break;
-    case Qt.Key_Down : event.accepted = true;
-        items.tux.state = "relesed"
-        break;
+    if(tuxImageStatus===2)
+    {    switch(event.key) {
+        case Qt.Key_Up : event.accepted = true;
+            items.onPressUp.stop()
+            items.onReleas.restart()
+            break;
+        case Qt.Key_Down : event.accepted = true;
+            items.onPressdown.stop()
+            items.onReleas.restart()
+            break;
+        }
+
     }
 
 }
@@ -114,10 +173,6 @@ function nextLevel() {
     if(numberOfLevel <= ++currentLevel ) {
         currentLevel = 0
     }
-    items.keyunable.visible=false
-    items.ok.visible = false
-    winlose = false
-    Oneclick = false
     initLevel();
 }
 

@@ -73,9 +73,12 @@ ActivityBase {
             property alias loopcloud:loopcloud
             property alias tuxX:tuxX
             property alias tuxY:tuxY
-            property alias tuxXWithY: tuxXWithY
             property alias tux:tux
             property alias tuximage:tuximage
+            property alias onPressdown:onPressdown
+            property alias onPressUp:onPressUp
+            property alias onReleas:onReleas
+            property alias helimotion:helimotion
         }
 
         IntroMessage {
@@ -149,8 +152,8 @@ ActivityBase {
                         if(Activity.Oneclick === false) {
                             tuximage.visible=true
                             tuxX.stop()
-                            tuxXWithY.start()
                             tuxY.start()
+                            Activity.tuxImageStatus=1
                             Activity.Oneclick = true;
                         }
                     }
@@ -180,6 +183,7 @@ ActivityBase {
             id:tux
             width:tuximage.width
             height:tuximage.height
+            x:-helimotion.width
             Image {
                 id: tuximage
                 source: activity.dataSetUrl+Activity.minitux
@@ -191,65 +195,84 @@ ActivityBase {
                         if(Activity.tuxImageStatus === 1) {
                             keyunable.visible = true
                             tuximage.source = activity.dataSetUrl+Activity.parachutetux
+                            Activity.tuxImageStatus = 2
 
                         }
                     }
                 }
+            }
+            onYChanged: {
+                if(tux.y>background.height/1.5&&Activity.tuxImageStatus===1){
+                    activity.audioEffects.play(activity.dataSetUrl+"bubble.wav" )
+                    Activity.tuxImageStatus=0
+                    Activity.onLose()
+                }
+                if((tux.y>background.height/1.5&&Activity.tuxImageStatus===2)&&((tux.x>boatmotion.x)&&(tux.x<boatmotion.x+boatmotion.width))){
+                   Activity.onWin()
+                }
+                else if((tux.y>background.height/1.5&&Activity.tuxImageStatus===2)&&((tux.x<boatmotion.x)||(tux.x>boatmotion.x+boatmotion.width))){
+                     Activity.tuxImageStatus=0
+                     Activity.onLose()
+                }
 
-                states :[
-                    State{
-                        name:"Upressed"
-                        PropertyChanges {
-                            target:tux
-                            properties:"y"
-                            duration:70000
-                        }
-
-                    },
-                    State{
-                        name:"Downpressed"
-                        PropertyChanges {
-                            target:tux
-                            properties:"y"
-                            duration:2000
-                        }
-                    },
-                    State{
-                        name:"relesed"
-                        PropertyChanges {
-                            target:tux
-                            properties:"y"
-                            duration:(bar.level === 1 ? 20000 : bar.level === 2 ? 16000 : bar.level === 3 ? 12000 : bar.level === 4 ? 10000 : 9000)
-                        }
-                    }
-                ]
-
+            }
+            SequentialAnimation{
+                id:tuxX
+                loops: Animation.Infinite
                 PropertyAnimation{
-                    id:tuxX
                     target:tux
                     properties: "x"
                     from:-helimotion.width
                     to:background.width
                     duration:(bar.level === 1 ? 20000 : bar.level === 2 ? 16000 : bar.level === 3 ? 12000 : bar.level === 4 ? 10000 : 9000)
                 }
-                PropertyAnimation{
-                    id:tuxXWithY
-                    target:tux
-                    properties: "x"
-                    from:tuxX.x
-                    to:background.width
-                    duration:(bar.level === 1 ? 50000 : bar.level === 2 ? 45000 : bar.level === 3 ? 40000 : bar.level === 4 ? 30000 : 9000)
-                }
-
-                PropertyAnimation{
-                    id:tuxY
-                    target:tux
-                    properties: "y"
-                    from:tuxX.y
-                    to:background.height/1.3
-                    duration:(bar.level === 1 ? 20000 : bar.level === 2 ? 16000 : bar.level === 3 ? 12000 : bar.level === 4 ? 10000 : 9000)
-                }
             }
+
+            PropertyAnimation{
+                id:onPressdown
+                target:tux
+                from:Activity.ycheck===false?tuxY.y :tux.y
+                properties:"x,y"
+                duration:2000
+                easing.type:Easing.Linear
+                to:background.height/1.3
+            }
+
+            PropertyAnimation{
+                id:onPressUp
+                target:tux
+                from:Activity.ycheck===false?tuxY.y :tux.y
+                duration:80000
+                properties:"x,y"
+                easing.type:Easing.OutCubic
+                to:background.height/1.3
+            }
+
+            PropertyAnimation{
+                id:onReleas
+                target:tux
+                from:tux.y
+                properties:"x,y"
+                duration:(bar.level === 1 ? 20000 : bar.level === 2 ? 16000 : bar.level === 3 ? 12000 : bar.level === 4 ? 10000 : 9000)
+                easing.type:Easing.Linear
+                to:background.height/1.3
+            }
+
+
+            PropertyAnimation{
+                id:tuxY
+                target:tux
+                properties: "x,y"
+                from:tuxX.y
+                to:background.height/1.3
+                duration:(bar.level === 1 ? 20000 : bar.level === 2 ? 16000 : bar.level === 3 ? 12000 : bar.level === 4 ? 10000 : 9000)
+            }
+
+
+
+
+
+
         }
 
         Item{
@@ -375,7 +398,6 @@ ActivityBase {
         Bonus {
             id: bonus
             interval: 2000
-            onLoose:Activity.onLose()
             onWin:ok.visible = true
 
         }
