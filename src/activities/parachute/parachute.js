@@ -81,7 +81,7 @@ function onLose(){
 
     items.bonus.bad("lion")
 
-    items.tux.visible = false
+    items.tuximage.visible = false
     checkPressed =false
     winlose = false
     Oneclick = false
