@@ -35,9 +35,9 @@ var pressed
 var Oneclick
 var winlose
 var loseflag = false
-var minitux="minitux.svg"
-var parachutetux="parachute.svg"
-var tuxImageStatus =1
+var minitux= "minitux.svg"
+var parachutetux= "parachute.svg"
+var tuxImageStatus = 1
 
 function start(items_) {
     items = items_

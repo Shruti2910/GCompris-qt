@@ -61,24 +61,24 @@ ActivityBase {
             id: items
             property Item main: activity.main
             property alias background: background
-            property alias animationheli:animationheli
-            property alias animationcloud:animationcloud
+            property alias animationheli: animationheli
+            property alias animationcloud: animationcloud
             property alias bar: bar
             property alias bonus: bonus
             property alias helicopter: helicopter
-            property alias animationboat:animationboat
-            property alias keyunable:keyunable
+            property alias animationboat: animationboat
+            property alias keyunable: keyunable
             property alias ok: ok
-            property alias loop:loop
-            property alias loopcloud:loopcloud
-            property alias tuxX:tuxX
-            property alias tuxY:tuxY
-            property alias tux:tux
-            property alias tuximage:tuximage
-            property alias onPressdown:onPressdown
-            property alias onPressUp:onPressUp
-            property alias onReleas:onReleas
-            property alias helimotion:helimotion
+            property alias loop: loop
+            property alias loopcloud: loopcloud
+            property alias tuxX: tuxX
+            property alias tuxY: tuxY
+            property alias tux: tux
+            property alias tuximage: tuximage
+            property alias onPressdown: onPressdown
+            property alias onPressUp: onPressUp
+            property alias onReleas: onReleas
+            property alias helimotion: helimotion
         }
 
         IntroMessage {
